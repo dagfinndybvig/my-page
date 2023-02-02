@@ -173,4 +173,4 @@ const IndexPage = () => {
 
 export default IndexPage
 
-export const Head = () => <title>Dagfinn</title>
+export const Head = () => <title>VS Code</title>
