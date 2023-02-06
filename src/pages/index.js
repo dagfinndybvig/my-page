@@ -1,18 +1,23 @@
-// Step 1: Import React
-import * as React from 'react'
+import axios from "axios";
+import React from "react";
 
-// Step 2: Define your component
-const IndexPage = () => {
+const baseURL = "https://jsonplaceholder.typicode.com/posts/1";
+
+export default function App() {
+  const [post, setPost] = React.useState(null);
+
+  React.useEffect(() => {
+    axios.get(baseURL).then((response) => {
+      setPost(response.data);
+    });
+  }, []);
+
+  if (!post) return null;
+
   return (
-    <main>
-      <h1>Welcome to my Gatsby site!</h1>
-      <p>I'm making this by following the Gatsby Tutorial.</p>
-    </main>
-  )
+    <div>
+      <h1>{post.title}</h1>
+      <p>{post.body}</p>
+    </div>
+  );
 }
-
-// You'll learn about this in the next task, just copy it for now
-export const Head = () => <title>Home Page</title>
-
-// Step 3: Export your component
-export default IndexPage
