@@ -1,7 +1,7 @@
 import axios from "axios";
 import React from "react";
 
-const baseURL = "https://jsonplaceholder.typicode.com/posts/1";
+const baseURL = "https://folk.ntnu.no/dybvig/mypage/database.php";
 
 export default function App() {
   const [post, setPost] = React.useState(null);
@@ -16,8 +16,8 @@ export default function App() {
 
   return (
     <div>
-      <h1>{post.title}</h1>
-      <p>{post.body}</p>
+      <h1>{post[1]}</h1>
+      
     </div>
   );
 }
