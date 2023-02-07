@@ -1,18 +1,34 @@
-// Step 1: Import React
-import * as React from 'react'
+import React from 'react';
 
-// Step 2: Define your component
-const IndexPage = () => {
-  return (
-    <main>
-      <h1>Welcome to my Gatsby site!</h1>
-      <p>I'm making this by following the Gatsby Tutorial.</p>
-    </main>
-  )
+class IndexPage extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      data: null
+    };
+  }
+
+  componentDidMount() {
+    // Make the GET request to the API endpoint
+    fetch('https://folk.ntnu.no/dybvig/mypage/respond.php')
+      .then(response => response.json())
+      .then(data => this.setState({ data }));
+  }
+
+  render() {
+    const { data } = this.state;
+
+    // Show a loading message until the data is received
+    if (!data) {
+      return <div>Loading...</div>;
+    }
+
+    // Render the received data
+    return (
+      <div><h1>{data.title}</h1>
+      <h2>{data.status}</h2></div>
+    );
+  }
 }
 
-// You'll learn about this in the next task, just copy it for now
-export const Head = () => <title>Home Page</title>
-
-// Step 3: Export your component
-export default IndexPage
+export default IndexPage;
