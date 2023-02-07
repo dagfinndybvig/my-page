@@ -26,7 +26,7 @@ class IndexPage extends React.Component {
     // Render the received data
     return (
       <div><h1>{data.title}</h1>
-      <h2>{data.status}</h2></div>
+      <h2>Greetings from {data.status}</h2></div>
     );
   }
 }
