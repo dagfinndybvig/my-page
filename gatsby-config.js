@@ -8,7 +8,7 @@ module.exports = {
   plugins: [{
     resolve: `gatsby-plugin-s3`,
     options: {
-      bucketName: "thedagfinn.net",
+      bucketName: "dybvig.thedagfinn.net",
     },
   },],
 }
