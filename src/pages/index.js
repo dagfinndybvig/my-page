@@ -1,5 +1,5 @@
-import React from 'react';
-import { Link } from 'gatsby'
+import React from 'react'
+import Layout from '../components/layout'
 
 const listStyles = {
   listStyleType: "none",
@@ -21,6 +21,7 @@ class IndexPage extends React.Component {
     .then(data => {
       const arrayData = Array.isArray(data) ? data : Object.values(data);
       this.setState({ data: arrayData });
+      console.log(data)
     });
   }
   
@@ -35,17 +36,15 @@ class IndexPage extends React.Component {
 
     // Render the received data
     return (
-      <main>
-        
+    <Layout pageTitle="Home">
       <h1>Greetings from</h1>
-      <Link to="/about">About</Link>
       <ul style={listStyles}>
- {data.map(d => (<li>{d.navn} the {d.type}</li>))} 
+ {data.map(d => (<li>{d.navn} the {d.type.toUpperCase()}</li>))} 
       </ul>
-     </main>
+    </Layout>
     );
   }
 }
 
-export const Head = () => <title>Toys</title>
+export const Head = () => <title>Home</title>
 export default IndexPage;
