@@ -1,8 +1,9 @@
 import React from 'react';
+import { Link } from 'gatsby'
 
 const listStyles = {
   listStyleType: "none",
-  padding: 50,
+  padding: 25
 };
 
 class IndexPage extends React.Component {
@@ -34,14 +35,17 @@ class IndexPage extends React.Component {
 
     // Render the received data
     return (
-      <>
+      <main>
+        
       <h1>Greetings from</h1>
+      <Link to="/about">About</Link>
       <ul style={listStyles}>
  {data.map(d => (<li>{d.navn} the {d.type}</li>))} 
       </ul>
-     </>
+     </main>
     );
   }
 }
 
+export const Head = () => <title>Toys</title>
 export default IndexPage;
